@@ -8,7 +8,7 @@
 
 #include "Lyra2.h"
 
-void allium_hash(void *state, const void *input)
+void allium_hash(const char* input, char* output, uint32_t len)
 {
     uint32_t hashA[8], hashB[8];
 
@@ -42,5 +42,5 @@ void allium_hash(void *state, const void *input)
     sph_groestl256(&ctx_groestl, hashB, 32);
     sph_groestl256_close(&ctx_groestl, hashA);
 
-    memcpy(state, hashA, 32);
+    memcpy(output, hashA, 32);
 }
